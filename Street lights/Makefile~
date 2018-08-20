@@ -1,0 +1,30 @@
+NAME = street_lights
+
+SRC =	main.cpp \
+		Parser.cpp \
+		Range.cpp
+
+OBJ = $(SRC:.c=.o)
+
+INC =	Parser.hpp \
+		Range.hpp
+
+FLAGS =
+
+all: $(NAME)
+
+$(OBJ): $(INC)
+
+.c.o:
+	@gcc $(FLAGS) -c $<
+
+$(NAME): $(OBJ)
+	@ar rc $(NAME) $(OBJ)
+
+clean:
+	@rm -f $(OBJ)
+
+fclean: clean
+	@rm -f $(NAME)
+
+re: fclean all
